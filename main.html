@@ -1,16 +1,99 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Craft Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+    <h2>Merge Craft Dates</h2>
+    <p>Enter sorted dates separated by commas:</p>
+    
+    <input type="text" id="emilyDates" placeholder="Emily's dates (e.g., 3, 7, 12, 20)">
+    <input type="text" id="oliverDates" placeholder="Oliver's dates (e.g., 1, 5, 8, 18, 25)">
+    
+    <button onclick="mergeAndDisplay()">Merge Dates</button>
+    
+    <div id="result"></div>
+
+    <script>
+        function mergeCraftDates(emilyDates, oliverDates) {
+            let merged = [];
+            let i = 0, j = 0;
+
+            while (i < emilyDates.length && j < oliverDates.length) {
+                if (emilyDates[i] < oliverDates[j]) {
+                    merged.push(emilyDates[i]);
+                    i++;
+                } else {
+                    merged.push(oliverDates[j]);
+                    j++;
+                }
+            }
+
+            while (i < emilyDates.length) {
+                merged.push(emilyDates[i]);
+                i++;
+            }
+
+            while (j < oliverDates.length) {
+                merged.push(oliverDates[j]);
+                j++;
+            }
+
+            return merged;
+        }
+
+        function mergeAndDisplay() {
+            let emilyInput = document.getElementById("emilyDates").value;
+            let oliverInput = document.getElementById("oliverDates").value;
+
+            // Convert string input to arrays
+            let emilyDates = emilyInput.split(",").map(Number).filter(n => !isNaN(n));
+            let oliverDates = oliverInput.split(",").map(Number).filter(n => !isNaN(n));
+
+            // Ensure both arrays are sorted
+            emilyDates.sort((a, b) => a - b);
+            oliverDates.sort((a, b) => a - b);
+
+            let mergedDates = mergeCraftDates(emilyDates, oliverDates);
+            
+            document.getElementById("result").innerText = "Merged Dates: " + mergedDates.join(", ");
+        }
+    </script>
 
 </body>
-
 </html>
+
