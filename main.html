@@ -11,12 +11,22 @@
             margin: 50px;
             background-color: #f4f4f4;
         }
+        .container {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
         input {
-            width: 80%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            display: block;
+            text-align: center;
         }
         button {
             background-color: #28a745;
@@ -25,6 +35,8 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
         }
         button:hover {
             background-color: #218838;
@@ -33,20 +45,23 @@
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
 
-    <h2>Merge Craft Dates</h2>
-    <p>Enter sorted dates separated by commas:</p>
-    
-    <input type="text" id="emilyDates" placeholder="Emily's dates (e.g., 3, 7, 12, 20)">
-    <input type="text" id="oliverDates" placeholder="Oliver's dates (e.g., 1, 5, 8, 18, 25)">
-    
-    <button onclick="mergeAndDisplay()">Merge Dates</button>
-    
-    <div id="result"></div>
+    <div class="container">
+        <h2>Merge Craft Dates</h2>
+        <p>Enter sorted dates separated by commas:</p>
+        
+        <input type="text" id="emilyDates" placeholder="Emily's dates (e.g., 3, 7, 12, 20)">
+        <input type="text" id="oliverDates" placeholder="Oliver's dates (e.g., 1, 5, 8, 18, 25)">
+        
+        <button onclick="mergeAndDisplay()">Merge Dates</button>
+        
+        <div id="result"></div>
+    </div>
 
     <script>
         function mergeCraftDates(emilyDates, oliverDates) {
@@ -96,4 +111,5 @@
 
 </body>
 </html>
+
 
